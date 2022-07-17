@@ -21,6 +21,7 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
     private BigDecimal price;
+    private int quantity;
 
     public Long getId() {
         return id;
@@ -54,6 +55,14 @@ public class Product {
         this.price = price;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) {
@@ -67,12 +76,14 @@ public class Product {
         return Objects.equals(id, product.id)
                 && Objects.equals(name, product.name)
                 && Objects.equals(category, product.category)
-                && Objects.equals(price, product.price);
+                && Objects.equals(price, product.price)
+                && Objects.equals(quantity, product.quantity);
     }
 
     @Override
     public int hashCode() {
-       return Objects.hash(id, name, category, price);
+       return Objects.hash(id, name,
+               category, price, quantity);
     }
 
     @Override
@@ -82,6 +93,7 @@ public class Product {
                 + ", name='" + name + '\''
                 + ", category=" + category
                 + ", price=" + price
+                + ", quantity=" + quantity
                 + '}';
     }
 }

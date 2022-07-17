@@ -1,10 +1,10 @@
 package com.goods.shop.repository;
 
-import com.goods.shop.model.Product;
+import com.goods.shop.model.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product, Long> {
+public interface OrderRepository extends JpaRepository<Order, Long> {
 
 }
