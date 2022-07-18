@@ -12,9 +12,9 @@ public class GoodsShopApplication {
     public static void main(String[] args) {
         SpringApplication.run(GoodsShopApplication.class, args);
     }
+
     @Bean
     public PasswordEncoder getPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 }
