@@ -77,8 +77,12 @@ public class Order {
 
     @Override
     public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
+        if (this == object) {
+            return true;
+        }
+        if (object == null || getClass() != object.getClass()) {
+            return false;
+        }
 
         Order order = (Order) object;
 
@@ -91,7 +95,7 @@ public class Order {
 
     @Override
     public int hashCode() {
-       return Objects.hash(id, user, products,
+        return Objects.hash(id, user, products,
                status, orderTime);
     }
 

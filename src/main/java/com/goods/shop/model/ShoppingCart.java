@@ -46,14 +46,18 @@ public class ShoppingCart {
         return products;
     }
 
-    public void setTickets(List<Product> products) {
+    public void setProducts(List<Product> products) {
         this.products = products;
     }
 
     @Override
     public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
+        if (this == object) {
+            return true;
+        }
+        if (object == null || getClass() != object.getClass()) {
+            return false;
+        }
 
         ShoppingCart shoppingCart = (ShoppingCart) object;
 
@@ -64,7 +68,7 @@ public class ShoppingCart {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, user, products != null ? products : 0 );
+        return Objects.hash(id, user, products != null ? products : 0);
     }
 
     @Override
