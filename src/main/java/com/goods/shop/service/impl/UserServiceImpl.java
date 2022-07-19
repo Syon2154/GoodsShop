@@ -5,18 +5,23 @@ import com.goods.shop.repository.UserRepository;
 import com.goods.shop.service.UserService;
 import java.util.List;
 import java.util.NoSuchElementException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository,
+                           PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public User add(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
@@ -25,11 +30,6 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByEmail(email)
                 .orElseThrow(() -> new NoSuchElementException("User with email: "
                 + email + " doesn't exists"));
-    }
-
-    @Override
-    public User update(User user) {
-        return userRepository.save(user);
     }
 
     @Override

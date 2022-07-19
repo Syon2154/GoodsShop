@@ -28,7 +28,7 @@ public class OrderServiceImpl implements OrderService {
         order.setUser(shoppingCart.getUser());
         order.setOrderTime(LocalDateTime.now());
         order.setProducts(shoppingCart.getProducts());
-        order.setStatus(Order.OrderStatus.UNPAID);
+        order.setPaid(false);
         orderRepository.save(order);
         shoppingCartService.clear(shoppingCart);
         return order;
@@ -49,7 +49,10 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public String payOrder(Long id) {
         Order order = get(id);
-        order.setStatus(Order.OrderStatus.PAID);
+        if (order.isPaid()) {
+           return "Order: "+ id + " already paid";
+        }
+        order.setPaid(true);
         update(order);
         return "Order: " + id + " successfully paid";
     }

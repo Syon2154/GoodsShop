@@ -1,6 +1,5 @@
 package com.goods.shop.service.impl;
 
-import com.goods.shop.model.Category;
 import com.goods.shop.model.Product;
 import com.goods.shop.repository.ProductRepository;
 import com.goods.shop.service.ProductService;
@@ -34,7 +33,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> findAllByCategory(Category category) {
-        return productRepository.findAll();
+    public List<Product> findAllByCategoryName(String categoryName) {
+        return productRepository.findAllByCategoryName(categoryName);
     }
 }

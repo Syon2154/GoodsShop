@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,8 +28,7 @@ public class Order {
             joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id"))
     private List<Product> products;
-    @Enumerated(value = EnumType.STRING)
-    private OrderStatus status;
+    private boolean isPaid;
     @Column(name = "order_time")
     private LocalDateTime orderTime;
 
@@ -59,12 +56,12 @@ public class Order {
         this.products = products;
     }
 
-    public OrderStatus getStatus() {
-        return status;
+    public boolean isPaid() {
+        return isPaid;
     }
 
-    public void setStatus(OrderStatus status) {
-        this.status = status;
+    public void setPaid(boolean paid) {
+        isPaid = paid;
     }
 
     public LocalDateTime getOrderTime() {
@@ -89,14 +86,14 @@ public class Order {
         return Objects.equals(id, order.id)
                 && Objects.equals(user, order.user)
                 && Objects.equals(products, products)
-                && Objects.equals(status, order.status)
+                && Objects.equals(isPaid, order.isPaid)
                 && Objects.equals(orderTime, order.orderTime);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(id, user, products,
-               status, orderTime);
+               isPaid, orderTime);
     }
 
     @Override
@@ -105,13 +102,8 @@ public class Order {
                 + "id=" + id
                 + ", user=" + user
                 + ", products=" + products
-                + ", status=" + status
+                + ", isPaid=" + isPaid
                 + ", orderTime=" + orderTime
                 + '}';
-    }
-
-    public enum OrderStatus {
-        PAID,
-        UNPAID
     }
 }

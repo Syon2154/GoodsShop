@@ -19,10 +19,10 @@ public class OrderMapper {
         OrderResponseDto responseDto = new OrderResponseDto();
         responseDto.setId(order.getId());
         responseDto.setUserId(order.getUser().getId());
-        List<ProductResponseDto> responseDtos = order.getProducts().stream()
+        List<ProductResponseDto> products = order.getProducts().stream()
                 .map(productMapper::mapToDto)
                 .collect(Collectors.toList());
-        responseDto.setProductDtos(responseDtos);
+        responseDto.setProducts(products);
         return responseDto;
     }
 }

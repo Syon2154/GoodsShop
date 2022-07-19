@@ -19,10 +19,10 @@ public class ShoppingCartMapper {
         ShoppingCartResponseDto responseDto = new ShoppingCartResponseDto();
         responseDto.setId(shoppingCart.getId());
         responseDto.setUserId(shoppingCart.getUser().getId());
-        List<ProductResponseDto> responseDtos = shoppingCart.getProducts().stream()
+        List<ProductResponseDto> products = shoppingCart.getProducts().stream()
                 .map(productMapper::mapToDto)
                 .collect(Collectors.toList());
-        responseDto.setProductDtos(responseDtos);
+        responseDto.setProducts(products);
         return responseDto;
     }
 }
