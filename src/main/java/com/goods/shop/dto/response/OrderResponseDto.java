@@ -1,14 +1,13 @@
 package com.goods.shop.dto.response;
 
-import com.goods.shop.model.Order;
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class OrderResponseDto {
     private Long id;
     private Long userId;
-    private List<ProductResponseDto> productDtos;
-    private Order.OrderStatus status;
+    private List<ProductResponseDto> products;
+    private boolean isPaid;
     private LocalDateTime orderTime;
 
     public Long getId() {
@@ -27,20 +26,20 @@ public class OrderResponseDto {
         this.userId = userId;
     }
 
-    public List<ProductResponseDto> getProductDtos() {
-        return productDtos;
+    public List<ProductResponseDto> getProducts() {
+        return products;
     }
 
-    public void setProductDtos(List<ProductResponseDto> productDtos) {
-        this.productDtos = productDtos;
+    public void setProducts(List<ProductResponseDto> products) {
+        this.products = products;
     }
 
-    public Order.OrderStatus getStatus() {
-        return status;
+    public boolean isPaid() {
+        return isPaid;
     }
 
-    public void setStatus(Order.OrderStatus status) {
-        this.status = status;
+    public void setPaid(boolean paid) {
+        isPaid = paid;
     }
 
     public LocalDateTime getOrderTime() {

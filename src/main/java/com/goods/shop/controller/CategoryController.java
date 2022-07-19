@@ -38,6 +38,7 @@ public class CategoryController {
         return categoryMapper.mapToDto(categoryService.get(id));
     }
 
+    @GetMapping
     public List<CategoryResponseDto> findAll() {
         return categoryService.findAll().stream()
                 .map(categoryMapper::mapToDto)

@@ -8,7 +8,5 @@ public interface UserService {
 
     User findByEmail(String email);
 
-    User update(User user);
-
     List<User> findAll();
 }
