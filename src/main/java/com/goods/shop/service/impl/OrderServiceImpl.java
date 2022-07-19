@@ -50,7 +50,7 @@ public class OrderServiceImpl implements OrderService {
     public String payOrder(Long id) {
         Order order = get(id);
         if (order.isPaid()) {
-           return "Order: "+ id + " already paid";
+            return "Order: " + id + " already paid";
         }
         order.setPaid(true);
         update(order);
